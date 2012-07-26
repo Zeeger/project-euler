@@ -93,9 +93,7 @@ namespace csharp_euler.Problems
 			Console.WriteLine();
 			Console.WriteLine();
 
-			Console.WriteLine("Loop iterations: " + _loopIterations + " Efficiency: " +
-				(decimal.Round(decimal.Parse(_loopIterations.ToString()) / decimal.Parse(subject.ToString()), 6) * 100) +
-				"% of max");
+			Console.WriteLine("Loop iterations: " + _loopIterations);
 
 
 			//This works, but takes too long when we get up in the billions
