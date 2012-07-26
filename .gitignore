@@ -1,0 +1,6 @@
+$ cat .gitignore
+bin/
+obj/
+*.suo
+*.swp
+*~
