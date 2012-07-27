@@ -14,9 +14,33 @@ namespace csharp_euler
 		{
 			var problemList = new List<ISolveProblems>();
 
-			problemList.Add(new Problem00001());
-			problemList.Add(new Problem00002());
-			problemList.Add(new Problem00003());
+			bool classInstantiationSuccess = true;
+			int problemNumber = 1;
+
+			do
+			{
+				var className = "csharp_euler.Problems.Problem" + problemNumber.ToString().PadLeft(5, '0');
+
+				ISolveProblems problem = Assembly.GetExecutingAssembly().CreateInstance(className) as ISolveProblems;
+
+				if (problem != null)
+				{
+					problemList.Add(problem);
+				}
+				else
+				{
+					classInstantiationSuccess = false;
+				}
+
+				problemNumber++;
+			}
+			while (classInstantiationSuccess == true);
+
+			//problemList.Add(new Problem00001());
+			//problemList.Add(new Problem00002());
+			//problemList.Add(new Problem00003()); 
+			//problemList.Add(new Problem00004());
+			//problemList.Add(Assembly.GetExecutingAssembly().CreateInstance("csharp_euler.Problems.Problem00004") as ISolveProblems);
 
 			Console.WriteLine("Start at problem:");
 
