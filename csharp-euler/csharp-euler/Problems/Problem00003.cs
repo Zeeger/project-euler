@@ -50,7 +50,7 @@ namespace csharp_euler.Problems
 
 					//Check for prime of the current upper end factor
 					//	(only if we'd be changing the found number
-					if (IsPrime(upperEndFactorCheck))
+					if (Common.MathFunc.IsPrime(upperEndFactorCheck))
 					{
 						largestPrimeFactor = upperEndFactorCheck;
 
@@ -73,7 +73,7 @@ namespace csharp_euler.Problems
 			{
 				foreach (long lowendFactor in progressingLowendFactors.Reverse())
 				{
-					if (IsPrime(lowendFactor))
+					if (Common.MathFunc.IsPrime(lowendFactor))
 					{
 						largestPrimeFactor = lowendFactor;
 						break;
@@ -132,20 +132,6 @@ namespace csharp_euler.Problems
 			//}
 		}
 
-		public bool IsPrime(long checkForPrime)
-		{
-			_loopIterations++;
-
-			long upperEndPrimeCheck = checkForPrime - 1;
-			for (long currentCheck = 2; currentCheck < upperEndPrimeCheck; currentCheck++)
-			{
-				if (checkForPrime % currentCheck == 0)
-				{
-					return false;
-				}
-			}
-
-			return true;
-		}
+		
 	}
 }

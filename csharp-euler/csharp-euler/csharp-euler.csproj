@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MathFunc.cs" />
     <Compile Include="ISolveProblems.cs" />
     <Compile Include="Problems\Problem00001.cs" />
     <Compile Include="Problems\Problem00002.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Problems\Problem00004.cs" />
     <Compile Include="Problems\Problem00005.cs" />
     <Compile Include="Problems\Problem00006.cs" />
+    <Compile Include="Problems\Problem00007.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
