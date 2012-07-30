@@ -37,6 +37,30 @@ namespace csharp_euler.Common
 			return true;
 		}
 
+		public static int NumberOfFactors(int number)
+		{
+			//Assumptions
+			//	The only number that only has one factor is 1
+
+			if (number == 1)
+				return 1;
+
+			int numberOfFactors = 2;
+
+			int maxFactor = number;
+
+			for (int x = 2; x < maxFactor; x++)
+			{
+				if (number % x == 0)
+				{
+					numberOfFactors += 2;
+					maxFactor = number / x;
+				}
+			}
+
+			return numberOfFactors;
+		}
+
 
 		//private static bool IsPrimeQuicker(long checkForPrime)
 		//{
