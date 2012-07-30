@@ -77,7 +77,7 @@ namespace csharp_euler
 							orderby typeName.Name
 							select typeName;
 
-			var problemsLoaded = "";
+			//var problemsLoaded = "";
 
 			foreach (var type in className)
 			{
@@ -93,15 +93,15 @@ namespace csharp_euler
 
 					problemDictionary.Add(classNumber,currentProblem);
 
-					problemsLoaded += classNumber + ", ";
+					//problemsLoaded += classNumber + ", ";
 					//Console.WriteLine(classNumber + ", ");
 				}
 
 			} 
 			
-			problemsLoaded = problemsLoaded.Substring(0, problemsLoaded.Length - 2);
+			//problemsLoaded = problemsLoaded.Substring(0, problemsLoaded.Length - 2);
 
-			Console.WriteLine(problemsLoaded);
+			//Console.WriteLine(problemsLoaded);
 
 			return problemDictionary;
 		}
