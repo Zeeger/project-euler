@@ -60,7 +60,7 @@ namespace csharp_euler.Problems
 			}
 		}
 
-		//This is possibly the wrong way to thing about it
+		//This is possibly the wrong way to think about it
 		public void Solve1stTry()
 		{
 			/*
