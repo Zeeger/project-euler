@@ -9,6 +9,8 @@ namespace csharp_euler.Problems
     {
         public void Solve()
         {
+			//var thing = Common.FileIO<string>.ReadFileIntoArray
+
             throw new NotImplementedException();
         }
     }

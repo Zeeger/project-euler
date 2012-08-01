@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\FileIO.cs" />
     <Compile Include="Common\MathFunc.cs" />
     <Compile Include="ISolveProblems.cs" />
     <Compile Include="Problems\Problem00001.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\prob11input.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\prob13input.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
