@@ -2,6 +2,8 @@
 
 # count the number of letters needed to print numbers 1-1000 in words
 
+require 'adamath.rb'
+
 def sandone(x)
 	dealt_with = 0
 	digit1 = x % 10
@@ -28,7 +30,7 @@ digitarr = Array.new
 	
 	print digitarr
 	
-	wordhash = Hash.newAKr
+	wordhash = Hash.new
 	
 	for y in 0..digitarr.size-1
 	
@@ -44,6 +46,41 @@ digitarr = Array.new
 		#elsif y==1 and digitarr[y] > 1
 		end
 	end
+end
+
+def threeDigitWords(lineHash,threeDigitNum)
+
+	if threeDigitNum.to_s.size > 3
+		threeDigitNum = threeDigitNum.to_s.split(//)[(threeDigitNum.to_s.size-3)...threeDigitNum.to_s.size]
+	end
+
+	concat = ""
+	threeDigitString = threeDigitNum.to_s
+	
+	while threeDigitString.split(//).size < 3
+		threeDigitString = "0" + threeDigitString
+	end
+	
+	firstDigit = threeDigitString.split(//)[0]
+	
+	if firstDigit.to_i > 0 	
+		concat+=lineHash[firstDigit]
+		concat+=lineHash[100.to_s]
+	end
+	
+	twoDigits = threeDigitString.to_i % 100
+	
+	unless lineHash[twoDigits.to_s].nil?
+		concat+=lineHash[twoDigits.to_s] unless lineHash[twoDigits.to_s].nil?
+	else
+		tenDigit = threeDigitString.split(//)[1]
+		oneDigit = threeDigitString.split(//)[2]
+		
+		concat+=lineHash[(tenDigit.to_i * 10).to_s] unless lineHash[tenDigit].nil?
+		concat+=lineHash[oneDigit] unless lineHash[oneDigit].nil?
+	end
+	
+	concat
 end
 
 lines = Array.new
@@ -64,36 +101,56 @@ end
 	#print line
 #end
 
-for x in 1..120
+adamath = Adamath.new
+
+totalCharNum = 0
+
+for x in 1..1000
 	
-	unless lineHash[x.to_s].nil?
-		print lineHash[x.to_s] + "\n"
-	else
+	concatnum = ''
+	
+	reversedNumber = x.to_s.reverse
+	
+	segmentOfThree = 0
+	
+	
+	
+	while reversedNumber.size >= 1
 		
-		#powerOfTenDivisor
-		potd = 10
-		cur = x
-		concatnum = ''
+		currentReversedNumber = ""
 		
-		while (cur*10) >= potd
+		if segmentOfThree == 0 && reversedNumber.size > 2
 		
-			#print cur.to_s + "\n"
-			remainder = cur % potd
-			
-			concatnum+=lineHash[remainder.to_s] unless lineHash[remainder.to_s].nil?
-			
-			if cur/100 == 1..9 and cur%100 == 0
-				print "fooobar " + cur.to_s + " "
+			if reversedNumber[0...2].reverse.to_i > 0
+				concatnum+="and"
 			end
-			
-			cur-=remainder
-			potd*=10
 		end
 		
-		print concatnum + "\n"
+		if reversedNumber.size >= 3
+			currentReversedNumber = reversedNumber[0...3]
+			reversedNumber = reversedNumber[3...reversedNumber.size]
+		else
+			currentReversedNumber = reversedNumber
+			reversedNumber = ""
+		end
+		
+		if segmentOfThree > 0
+			power = adamath.pow(10,segmentOfThree*3)
+			
+			concatnum = lineHash[power.to_s] + concatnum unless lineHash[power.to_s].nil?
+		end
+		
+		concatnum = threeDigitWords(lineHash,currentReversedNumber.reverse.to_i) + concatnum
+		
+		segmentOfThree+=1
+		
+		totalCharNum += concatnum.size
 	end
 	
+	print concatnum + concatnum.size.to_s + "\n"
+
 	
-	# print "\n" + wordhash.to_s + "\n"
 end
+
+print "Total Characters: " + totalCharNum.to_s
 
